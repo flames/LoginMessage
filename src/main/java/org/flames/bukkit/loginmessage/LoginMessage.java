@@ -20,7 +20,7 @@ public class LoginMessage extends JavaPlugin
   protected static final Logger log = Logger.getLogger("Minecraft");
   private final LoginMessagePlayerListener playerListener = new LoginMessagePlayerListener(this);
   public static String welcomemessage;
-  public static String broadcastmessage;
+  public static String broadcastplrmessage;
   public static String broadcastopmessage;
   public static String broadcastallmessage;
   
@@ -44,8 +44,8 @@ public class LoginMessage extends JavaPlugin
     Configuration configuration = new Configuration(new File(this.getDataFolder(), "configuration.yml"));
 	configuration.load();
 	welcomemessage = configuration.getString("Login-Message", "¤bWelcome, %name! && ¤eOnline list (%number): ¤4%list");
-	broadcastmessage = configuration.getString("Broadcast-Message", "¤bSay hello to ¤2%name ¤beveryone!");
-	broadcastopmessage = configuration.getString("Broadcast-OP", "¤bUhoh! ¤2%name ¤bis here, hide stop griefing!");
-	broadcastallmessage = configuration.getString("Broadcast-All", "¤bhello to everyone! I promise not to grief!");
+	broadcastplrmessage = configuration.getString("Broadcast-Player", "¤bSay hello to ¤2%name ¤beveryone!");
+	broadcastopmessage = configuration.getString("Broadcast-OP", "¤bUhoh! ¤2%name ¤bis here, stop griefing!");
+	broadcastallmessage = configuration.getString("Broadcast-All", "¤bhello everyone! I promise not to grief!");
   }
 }

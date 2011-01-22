@@ -37,16 +37,20 @@ public class LoginMessagePlayerListener extends PlayerListener {
   public void onPlayerJoin(PlayerEvent event) {
     Player player = event.getPlayer();
     String welcomemsg = LoginMessage.welcomemessage;
-    String broadcastmsg = LoginMessage.broadcastmessage;
+    String broadcastplrmsg = LoginMessage.broadcastplrmessage;
     String broadcastopmsg = LoginMessage.broadcastopmessage;
     String broadcastallmsg = LoginMessage.broadcastallmessage;
+    /* this message goes only to the player who joins */
     sendWelcomeMsg(player, welcomemsg);
     if (player.isOp() == true) {
+    	/* if operator joins send to this message to players who already in game */
     	sendBroadcastOpMsg(player, broadcastopmsg);
     } else {
-    	sendBroadcastAllMsg(player, broadcastallmsg);
+    	/* if normal player joins send to this message to players who already in game */
+    	sendBroadcastPlrMsg(player, broadcastplrmsg);
     }
-    sendBroadcastMsg(player, broadcastmsg);
+    /* this message goes to all players, those who already in game and the one who joins */
+    sendBroadcastAllMsg(player, broadcastallmsg);
   }
 
   public void sendWelcomeMsg(Player player, String welcomemsg) {
@@ -68,11 +72,8 @@ public class LoginMessagePlayerListener extends PlayerListener {
     String[] welcome = welcomemsg.split("&");
     sendMultiMessage(player, welcome);
   }
-  public void sendMultiMessage(Player player, String[] message) {
-    for (String str : message) player.sendMessage(str); 
-  }
-
-  public void sendBroadcastMsg(Player player, String broadcastmsg) {
+  
+  public void sendBroadcastPlrMsg(Player player, String broadcastmsg) {
     Player[] online = plugin.getServer().getOnlinePlayers();
     String list = "";
     int length = online.length - 1;
@@ -141,6 +142,12 @@ public class LoginMessagePlayerListener extends PlayerListener {
 	    sendMultiBroadcastAllMessage(player, broadcast);
   }
 
+  /* send message to the user who joins the game */
+  public void sendMultiMessage(Player player, String[] message) {
+    for (String str : message) player.sendMessage(str); 
+  }
+
+  /* send message to users that are already in game */
   public void sendMultiBroadcastMessage(Player player, String[] message) {
       if (player != null) {
         OnlineList.remove(player.getName());
@@ -152,6 +159,8 @@ public class LoginMessagePlayerListener extends PlayerListener {
       }
       OnlineList.add(player);
   } 
+  
+  /* send message to all users */
   public void sendMultiBroadcastAllMessage(Player player, String[] message) {
       Player[] arrayOfPlayer;
       str = (arrayOfPlayer = plugin.getServer().getOnlinePlayers()).length;
