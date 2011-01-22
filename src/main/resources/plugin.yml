@@ -1,0 +1,3 @@
+name: LoginMessage
+main: org.flames.bukkit.loginmessage.LoginMessage
+version: 0.2
