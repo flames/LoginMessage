@@ -43,7 +43,7 @@ public class LoginMessage extends JavaPlugin
     
     Configuration configuration = new Configuration(new File(this.getDataFolder(), "configuration.yml"));
 	configuration.load();
-	welcomemessage = configuration.getString("Login-Message", "¤bWelcome, %name! && ¤eOnline list (%number): ¤4%list");
+	welcomemessage = configuration.getString("Welcome-Message", "¤bWelcome, %name! && ¤eOnline list (%number): ¤4%list");
 	broadcastplrmessage = configuration.getString("Broadcast-Player", "¤bSay hello to ¤2%name ¤beveryone!");
 	broadcastopmessage = configuration.getString("Broadcast-OP", "¤bUhoh! ¤2%name ¤bis here, stop griefing!");
 	broadcastallmessage = configuration.getString("Broadcast-All", "¤bhello everyone! I promise not to grief!");
