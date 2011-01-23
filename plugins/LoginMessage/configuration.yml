@@ -1,7 +1,7 @@
 # Colors §x whre x is the color code (§4text §etext), Linebreaks with &
 
 # Login-Message will be sent only to the player who joins
-Welcome-Message: "§bWillkommen, %name! & §eZur Zeit §4%number §eSpieler online: §4%list &&Informationen, Weltkarte, Rangliste und Regeln findest du auf & §4http://myserver.tld &&Bei Ausfällen bitte erst auf der Webseite schauen, &falls dort nichts erwähnt wird, schicke eine E-Mail an & §4admin@myserver.tld"
+Welcome-Message: "§bWillkommen, §4%name§b! &§bZur Zeit §4%number §bSpieler online: §4%list &&§bRegeln, Informationen, Weltkarte und Rangliste findest du auf & §4http://yourserver.tld &&§bBei Ausfällen bitte erst auf der Webseite schauen, &§bfalls dort nichts erwähnt wird, schicke eine E-Mail an & §4admin@yourserver.tld"
 
 # Broadcast-Message will be sent only to players that are already online
 Broadcast-Player: "§bSagt mal Hallo zu §2%name §b!"
@@ -10,4 +10,7 @@ Broadcast-Player: "§bSagt mal Hallo zu §2%name §b!"
 Broadcast-OP: "§bHabt ihr §2%name §bnicht erwartet?!"
 
 # Broadcast-All will be sent to all players, those are already online and the player who joins
-Broadcast-All: "§bich, §2%name, §bverspreche mich zu benehmen!"
+Broadcast-All-Player: "&§2%name: §bverspreche mich zu benehmen §e^^"
+
+# Broadcast-All will be sent to all players, those are already online and the player who joins
+Broadcast-All-OP: "&§2%name: §bich komme nur mal nach den Rechten zu schauen §e:P"
