@@ -22,7 +22,8 @@ public class LoginMessage extends JavaPlugin
   public static String welcomemessage;
   public static String broadcastplrmessage;
   public static String broadcastopmessage;
-  public static String broadcastallmessage;
+  public static String broadcastallplrmessage;
+  public static String broadcastallopmessage;
   
   public LoginMessage(PluginLoader pluginLoader, Server instance, PluginDescriptionFile desc, File folder, File plugin, ClassLoader cLoader)
   {
@@ -46,6 +47,7 @@ public class LoginMessage extends JavaPlugin
 	welcomemessage = configuration.getString("Welcome-Message", "¤bWelcome, %name! && ¤eOnline list (%number): ¤4%list");
 	broadcastplrmessage = configuration.getString("Broadcast-Player", "¤bSay hello to ¤2%name ¤beveryone!");
 	broadcastopmessage = configuration.getString("Broadcast-OP", "¤bUhoh! ¤2%name ¤bis here, stop griefing!");
-	broadcastallmessage = configuration.getString("Broadcast-All", "¤bhello everyone! I promise not to grief!");
+	broadcastallplrmessage = configuration.getString("Broadcast-All-Player", "¤2%name: ¤bhello everyone! I promise not to grief ¤e;)");
+	broadcastallopmessage = configuration.getString("Broadcast-All-OP", "¤2%name: ¤bhello everyone! I just check the situation ¤e:P");
   }
 }

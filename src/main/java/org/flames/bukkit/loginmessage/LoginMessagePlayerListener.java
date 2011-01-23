@@ -36,21 +36,27 @@ public class LoginMessagePlayerListener extends PlayerListener {
 
   public void onPlayerJoin(PlayerEvent event) {
     Player player = event.getPlayer();
+    
     String welcomemsg = LoginMessage.welcomemessage;
     String broadcastplrmsg = LoginMessage.broadcastplrmessage;
     String broadcastopmsg = LoginMessage.broadcastopmessage;
-    String broadcastallmsg = LoginMessage.broadcastallmessage;
+    String broadcastallplrmsg = LoginMessage.broadcastallplrmessage;
+    String broadcastallopmsg = LoginMessage.broadcastallopmessage;
+    
     /* this message goes only to the player who joins */
     sendWelcomeMsg(player, welcomemsg);
+    
     if (player.isOp() == true) {
-    	/* if operator joins send to this message to players who already in game */
-    	sendBroadcastOpMsg(player, broadcastopmsg);
+    	/* if operator joins send, to this message to players who already in game */
+    	sendBroadcastMsg(player, broadcastopmsg);
+    	/* if operator joins, send to this message to all players, those who already in game and the one who joins */
+    	sendBroadcastAllMsg(player, broadcastallopmsg);
     } else {
-    	/* if normal player joins send to this message to players who already in game */
-    	sendBroadcastPlrMsg(player, broadcastplrmsg);
+    	/* if normal player joins, send to this message to players who already in game */
+    	sendBroadcastMsg(player, broadcastplrmsg);
+    	/* if normal player joins, send to this message to all players, those who already in game and the one who joins */
+    	sendBroadcastAllMsg(player, broadcastallplrmsg);
     }
-    /* this message goes to all players, those who already in game and the one who joins */
-    sendBroadcastAllMsg(player, broadcastallmsg);
   }
 
   public void sendWelcomeMsg(Player player, String welcomemsg) {
@@ -73,7 +79,7 @@ public class LoginMessagePlayerListener extends PlayerListener {
     sendMultiMessage(player, welcome);
   }
   
-  public void sendBroadcastPlrMsg(Player player, String broadcastmsg) {
+  public void sendBroadcastMsg(Player player, String broadcastmsg) {
     Player[] online = plugin.getServer().getOnlinePlayers();
     String list = "";
     int length = online.length - 1;
@@ -94,29 +100,6 @@ public class LoginMessagePlayerListener extends PlayerListener {
     broadcastmsg = broadcastmsg.replaceAll("(¤([a-z0-9]))", "¤$2");
     String[] broadcast = broadcastmsg.split("&");
     sendMultiBroadcastMessage(player, broadcast);
-  }
-
-  public void sendBroadcastOpMsg(Player player, String broadcastopmsg) {
-	    Player[] online = plugin.getServer().getOnlinePlayers();
-	    String list = "";
-	    int length = online.length - 1;
-	    int on = 0;
-	    for (Player current : online) {
-	      if (current == null) { on++;
-	      } else {
-	        list = list + (on >= length ? current.getName() : new StringBuilder().append(current.getName()).append(", ").toString());
-	        on++;
-	      }
-	    }
-	    int serverlist = online.length;
-	    String serverliststring = Integer.toString(serverlist);
-	    
-	    broadcastopmsg = broadcastopmsg.replaceAll("%name", player.getName());
-	    broadcastopmsg = broadcastopmsg.replaceAll("%number", serverliststring);
-	    broadcastopmsg = broadcastopmsg.replaceAll("%list", list);
-	    broadcastopmsg = broadcastopmsg.replaceAll("(¤([a-z0-9]))", "¤$2");
-	    String[] broadcast = broadcastopmsg.split("&");
-	    sendMultiBroadcastMessage(player, broadcast);
   }
 
   public void sendBroadcastAllMsg(Player player, String broadcastallmsg) {
