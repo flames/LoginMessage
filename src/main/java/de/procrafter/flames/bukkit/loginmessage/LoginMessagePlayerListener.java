@@ -1,7 +1,12 @@
-package org.flames.bukkit.loginmessage;
+package de.procrafter.flames.bukkit.loginmessage;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.bukkit.ChatColor;
+import org.bukkit.World;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerEvent;
@@ -24,15 +29,6 @@ public class LoginMessagePlayerListener extends PlayerListener {
 	    Player player = event.getPlayer();
 	    OnlineList.add(player);
 	}
-
-  public void onPlayerCommand(PlayerChatEvent event) {
-    String[] split = event.getMessage().split(" ");
-    Player player = event.getPlayer();
-    if (split[0].equals("/lmsg")) {
-      String welcomemsg = LoginMessage.welcomemessage;
-      sendWelcomeMsg(player, welcomemsg);
-    }
-  }
 
   public void onPlayerJoin(PlayerEvent event) {
     Player player = event.getPlayer();

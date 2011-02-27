@@ -1,3 +1,11 @@
 name: LoginMessage
-main: org.flames.bukkit.loginmessage.LoginMessage
-version: 0.2
+main: de.procrafter.flames.bukkit.loginmessage.LoginMessage
+version: 0.3
+description: >
+             LoginMessage plugin.
+commands:
+  lmsg:
+    description: Returns login message if you missed on join.
+    usage: |
+           /<command>
+           Example: /<command> - returns login message if you missed on join.
