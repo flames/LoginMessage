@@ -21,6 +21,7 @@ public class LoginMessage extends JavaPlugin {
 	
   private final LoginMessagePlayerListener playerListener = new LoginMessagePlayerListener(this);
   
+  public static String whomessage;
   public static String welcomemessage;
   public static String broadcastplrmessage;
   public static String broadcastopmessage;
@@ -48,7 +49,8 @@ public class LoginMessage extends JavaPlugin {
     
     Configuration configuration = new Configuration(new File(this.getDataFolder(), "configuration.yml"));
 	configuration.load();
-	welcomemessage = configuration.getString("Welcome-Message", "¤bWelcome, %name! && ¤eOnline list (%number): ¤4%list");
+	whomessage = configuration.getString("Who-Message", "¤eOnline list (%number): ¤f%list");
+	welcomemessage = configuration.getString("Welcome-Message", "¤bWelcome, %name! && ¤eOnline list (%number): ¤f%list");
 	broadcastplrmessage = configuration.getString("Broadcast-Player", "¤bSay hello to ¤2%name ¤beveryone!");
 	broadcastopmessage = configuration.getString("Broadcast-OP", "¤bUhoh! ¤2%name ¤bis here, stop griefing!");
 	broadcastallplrmessage = configuration.getString("Broadcast-All-Player", "¤2%name: ¤bhello everyone! I promise not to grief ¤e;)");
@@ -61,15 +63,24 @@ public class LoginMessage extends JavaPlugin {
       
       if (commandName.equals("lmsg")) {
       	return performLmsg(sender, trimmedArgs);
+      } else if (commandName.equals("who")) {
+      	return performWho(sender, trimmedArgs);
       }
       return false;
   	}
 
 	private boolean performLmsg(CommandSender sender, String[] split) {
-      Player player = (Player)sender;
-      String welcomemsg = LoginMessage.welcomemessage;
-      
-      playerListener.sendWelcomeMsg(player, welcomemsg);
-      return true;
-	}
+	      Player player = (Player)sender;
+	      String welcomemsg = LoginMessage.welcomemessage;
+	      
+	      playerListener.sendWelcomeMsg(player, welcomemsg);
+	      return true;
+		}
+	private boolean performWho(CommandSender sender, String[] split) {
+	      Player player = (Player)sender;
+	      String whomsg = LoginMessage.whomessage;
+	      
+	      playerListener.sendWhoMsg(player, whomsg);
+	      return true;
+		}
 }

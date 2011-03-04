@@ -9,3 +9,8 @@ commands:
     usage: |
            /<command>
            Example: /<command> - returns login message if you missed on join.
+  who:
+    description: Returns online players list.
+    usage: |
+           /<command>
+           Example: /<command> - returns online players list.

@@ -56,25 +56,45 @@ public class LoginMessagePlayerListener extends PlayerListener {
   }
 
   public void sendWelcomeMsg(Player player, String welcomemsg) {
-    Player[] online = plugin.getServer().getOnlinePlayers();
-    String list = "";
-    int length = online.length - 1;
-    int on = 0;
-    for (Player current : online) {
-      if (current == null) { on++;
-      } else {
-        list = list + (on >= length ? current.getName() : new StringBuilder().append(current.getName()).append(", ").toString());
-        on++; }  } int serverlist = online.length;
-    String serverliststring = Integer.toString(serverlist);
-    
-    welcomemsg = welcomemsg.replaceAll("%name", player.getName());
-    welcomemsg = welcomemsg.replaceAll("%number", serverliststring);
-    welcomemsg = welcomemsg.replaceAll("%list", list);
-    welcomemsg = welcomemsg.replaceAll("(¤([a-z0-9]))", "¤$2");
-    String[] welcome = welcomemsg.split("&");
-    sendMultiMessage(player, welcome);
-  }
-  
+	    Player[] online = plugin.getServer().getOnlinePlayers();
+	    String list = "";
+	    int length = online.length - 1;
+	    int on = 0;
+	    for (Player current : online) {
+	      if (current == null) { on++;
+	      } else {
+	        list = list + (on >= length ? current.getName() : new StringBuilder().append(current.getName()).append(", ").toString());
+	        on++; }  } int serverlist = online.length;
+	    String serverliststring = Integer.toString(serverlist);
+	    
+	    welcomemsg = welcomemsg.replaceAll("%name", player.getName());
+	    welcomemsg = welcomemsg.replaceAll("%number", serverliststring);
+	    welcomemsg = welcomemsg.replaceAll("%list", list);
+	    welcomemsg = welcomemsg.replaceAll("(¤([a-z0-9]))", "¤$2");
+	    String[] welcome = welcomemsg.split("&");
+	    sendMultiMessage(player, welcome);
+	  }
+	  
+  public void sendWhoMsg(Player player, String whomsg) {
+	    Player[] online = plugin.getServer().getOnlinePlayers();
+	    String list = "";
+	    int length = online.length - 1;
+	    int on = 0;
+	    for (Player current : online) {
+	      if (current == null) { on++;
+	      } else {
+	        list = list + (on >= length ? current.getName() : new StringBuilder().append(current.getName()).append(", ").toString());
+	        on++; }  } int serverlist = online.length;
+	    String serverliststring = Integer.toString(serverlist);
+	    
+	    whomsg = whomsg.replaceAll("%name", player.getName());
+	    whomsg = whomsg.replaceAll("%number", serverliststring);
+	    whomsg = whomsg.replaceAll("%list", list);
+	    whomsg = whomsg.replaceAll("(¤([a-z0-9]))", "¤$2");
+	    String[] who = whomsg.split("&");
+	    sendMultiMessage(player, who);
+	  }
+	  
   public void sendBroadcastMsg(Player player, String broadcastmsg) {
     Player[] online = plugin.getServer().getOnlinePlayers();
     String list = "";
